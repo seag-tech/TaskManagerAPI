@@ -47,6 +47,29 @@
 10. **Documentación (Opcional):**
    - Puedes agregar documentación básica para la API utilizando herramientas como Swagger o Laravel API Documentation.
 
+### Entrega mediante Pull Request:
+
+1. **Fork del Repositorio:**
+   - Realiza un fork del repositorio central para obtener tu propia copia.
+
+2. **Desarrollo:**
+   - Trabaja en el desarrollo de la prueba en tu fork del repositorio.
+
+3. **Commit y Push:**
+   - Realiza commits periódicos y haz push a tu fork del repositorio.
+
+4. **Pull Request:**
+   - Cuando completes la prueba, abre un pull request desde tu fork hacia el repositorio central.
+
+5. **Descripción del Pull Request:**
+   - Proporciona una descripción clara y detallada de los cambios realizados, las funcionalidades agregadas y cualquier consideración especial.
+
+6. **Revisión del Código:**
+   - Realizaré una revisión del código para evaluar la calidad y la implementación de las funcionalidades.
+
+7. **Feedback:**
+   - Proporcionaré retroalimentación sobre los aspectos positivos y sugeriré mejoras si es necesario.
+
 **Notas:**
 - Utiliza Eloquent para las consultas a la base de datos.
 - Asegúrate de manejar correctamente las solicitudes HTTP para la creación de tareas.
