@@ -86,17 +86,4 @@ class TaskService
         return $task->toArray();
     }
 
-    /**
-     * 
-     */
-    public function externalTodos()
-    {
-        $request    = (new Client())->request('GET', Constants::JSON_PLACEHOLDER_API.'/todos');
-        $data       = $request->getBody()->getContents();
-        $status     = $request->getStatusCode();
-        return [
-            'code'    => $status,
-            'data'      => json_decode($data, true)
-        ];
-    }
 }
