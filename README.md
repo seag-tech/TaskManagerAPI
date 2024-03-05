@@ -1,76 +1,66 @@
-## Prueba Técnica de Laravel para API y Consumo de APIs Públicas
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-**Objetivo:** Crear una API RESTful de gestión de tareas y agregar la capacidad de consultar una API pública para obtener información adicional sobre las tareas.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-### Pasos:
+## About Laravel
 
-1. **Configuración del Proyecto:**
-   - Crea un nuevo proyecto Laravel llamado "TaskManagerAPI".
-   - Configura la conexión a la base de datos SQLite.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-2. **Base de Datos:**
-   - Crea una migración para la tabla "tasks" con los siguientes campos:
-     - `id` (autoincremental)
-     - `title` (cadena de texto)
-     - `description` (texto)
-     - `completed` (booleano)
-     - `due_date` (fecha de vencimiento)
-     - `created_at` y `updated_at` (marcas de tiempo)
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-3. **Modelo:**
-   - Crea un modelo llamado "Task" para la tabla "tasks".
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-4. **Controladores:**
-   - Crea un controlador llamado "TaskController" con métodos para:
-     - Obtener todas las tareas.
-     - Obtener una tarea específica.
-     - Crear una nueva tarea que no tenga fecha de vencimiento.
-     - Crear una nueva tarea con fecha de vencimiento.
-     - Marcar una tarea como completada.
-     - Agregar un método para obtener información adicional sobre una tarea consultando una API pública de tu elección (por ejemplo, la API de JSONPlaceholder).
+## Learning Laravel
 
-5. **Rutas:**
-   - Define las rutas necesarias en el archivo "api.php" para llamar a los métodos del controlador.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-6. **Validaciones:**
-   - Agrega validaciones a las solicitudes de la API para garantizar que el título sea obligatorio.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-7. **Consumo de API Pública:**
-   - Utiliza Laravel HTTP Client o cualquier otra biblioteca para realizar la consulta a la API pública. Añade la información obtenida de la API pública a la respuesta de la API de gestión de tareas.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-8. **Notificaciones:**
-   - Implementa notificaciones para alertar al usuario cuando una tarea está vencida. Puedes usar Laravel Notifications y configurar un canal de notificación de tu elección (correo electrónico, SMS, Slack, etc.).
+## Laravel Sponsors
 
-9. **Middleware (Opcional):**
-   - Implementa un middleware para autenticar las solicitudes de la API (puedes usar Laravel Passport u otra solución de tu elección).
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-10. **Documentación (Opcional):**
-   - Puedes agregar documentación básica para la API utilizando herramientas como Swagger o Laravel API Documentation.
+### Premium Partners
 
-### Entrega mediante Pull Request:
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-1. **Fork del Repositorio:**
-   - Realiza un fork del repositorio central para obtener tu propia copia.
+## Contributing
 
-2. **Desarrollo:**
-   - Trabaja en el desarrollo de la prueba en tu fork del repositorio.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-3. **Commit y Push:**
-   - Realiza commits periódicos y haz push a tu fork del repositorio.
+## Code of Conduct
 
-4. **Pull Request:**
-   - Cuando completes la prueba, abre un pull request desde tu fork hacia el repositorio central.
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-5. **Descripción del Pull Request:**
-   - Proporciona una descripción clara y detallada de los cambios realizados, las funcionalidades agregadas y cualquier consideración especial.
+## Security Vulnerabilities
 
-6. **Revisión del Código:**
-   - Realizaré una revisión del código para evaluar la calidad y la implementación de las funcionalidades.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-7. **Feedback:**
-   - Proporcionaré retroalimentación sobre los aspectos positivos y sugeriré mejoras si es necesario.
+## License
 
-**Notas:**
-- Utiliza Eloquent para las consultas a la base de datos.
-- Asegúrate de manejar correctamente las solicitudes HTTP para la creación de tareas.
-- Documenta cómo realizar la configuración para consumir la API pública elegida.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
