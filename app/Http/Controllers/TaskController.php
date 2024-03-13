@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use App\Http\Requests\CreateTaskRequest;
 use App\Models\Task;
-
-
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -27,65 +26,38 @@ class TaskController extends Controller
         return response()->json($task, 200);
     }
 
-    public function taskWithDate(Request $request)
+    public function store(CreateTaskRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
-        }
-        $user = $request->user();
-
         Task::create([
-            'user_id' => $user->id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'due_date' => $request->due_date,
+            'user_id' => $request->user()->id,
+            'title' => $request->validated('title'),
+            'description' => $request->validated('description'),
+            'due_date' => $request->validated('due_date'),
         ]);
 
-        return response()->json(['message' => 'Task Created with due date'], 200);
+        return response()->json(['message' => 'Task created successfully'], 200);
     }
 
-    public function taskWithOutDate(Request $request)
+    public function changeStatusTask(Request $request, Task $task)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|string',
-        ]);
+        Gate::authorize('changeStatusTask', $task);
 
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 400);
+        if ($task->due_date->lessThan(now())) {
+            return response()->json(['message' => 'Task is already due'], 422);
         }
-        $user = $request->user();
-
-        Task::create([
-            'user_id' => $user->id,
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-
-        return response()->json(['message' => 'Task Created without due date'], 200);
-    }
-
-    public function completeTask(Request $request, $id)
-    {
-
-        $task = Task::findOrFail($id);
 
         $user = $request->user();
 
-        if ($task->user_id !== $user->id) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
 
-        $task->completed = true;
+
+        $task->completed = !$task->completed;
+
         $task->save();
 
         return response()->json($task);
     }
 
-    public function externalInfo(Request $request, $idTask)
+    public function externalInfo($idTask)
     {
         $task = Task::findOrFail($idTask);
 
@@ -97,7 +69,7 @@ class TaskController extends Controller
 
             $data = [
                 'task' => $task,
-                'external_api_info' => $externalInfo
+                'description' => $externalInfo
             ];
 
             return response()->json($data);

@@ -18,6 +18,12 @@ class Task extends Model
         'due_date',
     ];
 
+    protected $casts = [
+        'due_date' => 'date',
+        'completed' => 'bool',
+        'notified' => 'bool',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
