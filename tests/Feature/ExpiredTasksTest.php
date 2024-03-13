@@ -33,7 +33,6 @@ class ExpiredTasksTest extends TestCase
         $this->artisan('tasks:check-expired');
 
 
-        // Asegurarse de que no se lanzaron excepciones
         $this->assertTrue(true, 'La prueba se ejecutó correctamente.');
     }
 }

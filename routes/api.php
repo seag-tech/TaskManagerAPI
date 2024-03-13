@@ -17,6 +17,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/task-with-date', [TaskController::class, 'taskWithDate']);
 
+    Route::post('/task-without-date', [TaskController::class, 'taskWithOutDate']);
+
     Route::put('/complete-task/{id}', [TaskController::class, 'completeTask']);
 
     Route::get('/external-info-task/{id}', [TaskController::class, 'externalInfo']);
